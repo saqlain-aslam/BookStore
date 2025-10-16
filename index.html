@@ -10,28 +10,36 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-  <script src="assets/model.js"></script>
-  <script src="assets/cart.js"></script>
+  <!-- <script src="assets/model.js"></script> -->
+  <script src="assets/app.js"></script>
+  <script src="assets/search.js"></script>
+
+
 </head>
 
 <body class=" bg-secondary">
 
-  <nav class="navbar bg-body-tertiary rounded px-5 py-2">
+  <nav class="navbar bg-body-tertiary rounded px-5  py-2 sticky-top">
     <div class="container-fluid">
       <a class="navbar-brand fw-bold fs-4 text-success">
         Book Store
       </a>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
       </form>
       <div class="d-flex ">
-        <button class="btn btn-outline-success me-2" data-bs-toggle="modal" data-bs-target="#addBookModal">Add Book</button>
+        <button class="btn btn-outline-success me-2" data-bs-toggle="modal" data-bs-target="#addBookModal">Add
+          Book</button>
         <a href="cart.html" class="btn btn-outline-warning  "><i class="bi bi-cart"></i></a>
       </div>
 
     </div>
   </nav>
+
+  <div class="d-flex text-start py-3 px-5 ms-5">
+    <h1 class="fw-bold fs-3 ">Library</h1>
+  </div>
 
   <div class="container mt-4">
     <div class="row" id="bookList"></div>
@@ -62,7 +70,6 @@
               <label for="bookPrice" class="form-label">Price</label>
               <input type="number" class="form-control" id="bookPrice" required>
             </div>
-
 
             <div class="mb-3">
               <label for="bookImage" class="form-label">Upload Image</label>
