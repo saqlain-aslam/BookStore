@@ -114,9 +114,9 @@ $(document).ready(function () {
 $("#addBookForm").on("submit", function (e) {
   e.preventDefault();
 
-  const title = $("#bookTitle").val();
-  const author = $("#bookAuthor").val();
-  const price = $("#bookPrice").val();
+  const title = $("#bookTitle").val().trim();
+  const author = $("#bookAuthor").val().trim();
+  const price = $("#bookPrice").val().trim();
   const imageFile = $("#bookImage")[0].files[0];
   const editId = $("#submitAddBook").data("edit-id"); 
 
@@ -125,17 +125,25 @@ $("#addBookForm").on("submit", function (e) {
     return;
   }
 
+  const duplicateBook = books.find(
+    (b) => b.title.toLowerCase() === title.toLowerCase() && b.id !== editId
+  );
+
+  if (duplicateBook) {
+    alert("A book with this title already exists!");
+    return;
+  }
+
   if (editId) {
     const bookIndex = books.findIndex((b) => b.id === editId);
     if (bookIndex !== -1) {
-
       if (imageFile) {
         const reader = new FileReader();
         reader.onload = function (event) {
           books[bookIndex].title = title;
           books[bookIndex].author = author;
           books[bookIndex].price = price;
-          books[bookIndex].image = event.target.result; 
+          books[bookIndex].image = event.target.result;
 
           saveBooks();
           renderBooks();
@@ -152,7 +160,7 @@ $("#addBookForm").on("submit", function (e) {
         resetForm();
       }
     }
-    return; 
+    return;
   }
 
   if (imageFile) {
@@ -173,6 +181,7 @@ $("#addBookForm").on("submit", function (e) {
     resetForm();
   }
 });
+
 
 function resetForm() {
   $("#addBookForm")[0].reset();
