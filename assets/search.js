@@ -32,7 +32,9 @@ $(document).ready(function () {
               <p class="card-text">${book.author}</p>
               <p class="fw-bold text-success">$${book.price}</p>
               <div class="d-flex justify-content-between">
+                 <button class="btn btn-sm btn-primary edit-book" data-id="${book.id}">Edit</button>
                 <button class="btn btn-sm btn-warning add-to-cart" data-id="${book.id}">Add to Cart</button>
+                <button class="btn btn-sm btn-danger delete-book" data-id="${book.id}">Delete</button>
               </div>
             </div>
           </div>
